@@ -6,6 +6,7 @@
 
 // Borrowed from http://nshipster.com/method-swizzling/
 + (void)load {
+/*
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
@@ -31,6 +32,7 @@
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
     });
+    */
 }
 
 - (BOOL)identity_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
