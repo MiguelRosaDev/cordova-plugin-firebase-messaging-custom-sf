@@ -15,6 +15,7 @@
 }
 
 - (void)requestPermission:(CDVInvokedUrlCommand *)command {
+    /*
     NSDictionary* options = [command.arguments objectAtIndex:0];
 
     NSNumber* forceShowSetting = options[@"forceShow"];
@@ -42,6 +43,7 @@
                           }];
 
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+    */
 }
 
 - (void)clearNotifications:(CDVInvokedUrlCommand *)command {
