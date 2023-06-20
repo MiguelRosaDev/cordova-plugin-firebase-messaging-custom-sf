@@ -57,6 +57,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    /*
     FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
     if (application.applicationState != UIApplicationStateActive) {
         [fcmPlugin sendBackgroundNotification:userInfo];
@@ -65,12 +66,13 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     }
 
     completionHandler(UIBackgroundFetchResultNewData);
+    */
 }
 
 - (void)messaging:(FIRMessaging *)messaging didReceiveRegistrationToken:(NSString *)fcmToken {
-    FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
+    //FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
 
-    [fcmPlugin sendToken:fcmToken];
+    //[fcmPlugin sendToken:fcmToken];
 }
 
 # pragma mark - UNUserNotificationCenterDelegate
@@ -78,24 +80,28 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
        willPresentNotification:(UNNotification *)notification
          withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+         /*
     NSDictionary *userInfo = notification.request.content.userInfo;
     FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
 
     [fcmPlugin sendNotification:userInfo];
 
     completionHandler([self getPluginInstance].forceShow);
+    */
 }
 
 // handle notification messages after display notification is tapped by the user
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler {
+         /*
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
 
     [fcmPlugin sendBackgroundNotification:userInfo];
 
     completionHandler();
+    */
 }
 
 @end
