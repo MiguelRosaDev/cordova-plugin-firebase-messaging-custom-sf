@@ -49,13 +49,16 @@
 }
 
 - (void)clearNotifications:(CDVInvokedUrlCommand *)command {
+/*
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center removeAllDeliveredNotifications];
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    */
 }
 
 - (void)deleteToken:(CDVInvokedUrlCommand *)command {
+/*
     [[FIRMessaging messaging] deleteTokenWithCompletion:^(NSError * err) {
         CDVPluginResult *pluginResult;
         if (err) {
@@ -65,6 +68,7 @@
         }
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
+    */
 }
 
 - (void)getToken:(CDVInvokedUrlCommand *)command {
@@ -128,13 +132,16 @@
 }
 
 - (void)getBadge:(CDVInvokedUrlCommand *)command {
+/*
     int badge = (int)[[UIApplication sharedApplication] applicationIconBadgeNumber];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:badge];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    */
 }
 
 - (void)subscribe:(CDVInvokedUrlCommand *)command {
+/*
     NSString* topic = [NSString stringWithFormat:@"%@", [command.arguments objectAtIndex:0]];
 
     [[FIRMessaging messaging] subscribeToTopic:topic
@@ -147,9 +154,11 @@
                                         }
                                         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                                     }];
+                                    */
 }
 
 - (void)unsubscribe:(CDVInvokedUrlCommand *)command {
+/*
     NSString* topic = [NSString stringWithFormat:@"%@", [command.arguments objectAtIndex:0]];
 
     [[FIRMessaging messaging] unsubscribeFromTopic:topic
@@ -162,6 +171,7 @@
                                             }
                                             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                                         }];
+                                        */
 }
 
 - (void)onMessage:(CDVInvokedUrlCommand *)command {
