@@ -68,6 +68,7 @@
 }
 
 - (void)getToken:(CDVInvokedUrlCommand *)command {
+/*
     CDVPluginResult *pluginResult;
     NSString* type = [command.arguments objectAtIndex:0];
 
@@ -112,6 +113,7 @@
     if (pluginResult) {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
+    */
 }
 
 - (void)setBadge:(CDVInvokedUrlCommand *)command {
