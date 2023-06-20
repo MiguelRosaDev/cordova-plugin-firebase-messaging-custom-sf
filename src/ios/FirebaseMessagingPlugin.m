@@ -179,6 +179,7 @@
 }
 
 - (void)onBackgroundMessage:(CDVInvokedUrlCommand *)command {
+/*
     self.backgroundNotificationCallbackId = command.callbackId;
 
     if (self.lastNotification) {
@@ -186,6 +187,7 @@
 
         self.lastNotification = nil;
     }
+    */
 }
 
 - (void)onTokenRefresh:(CDVInvokedUrlCommand *)command {
@@ -193,14 +195,17 @@
 }
 
 - (void)sendNotification:(NSDictionary *)userInfo {
+/*
     if (self.notificationCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userInfo];
         [pluginResult setKeepCallbackAsBool:YES];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.notificationCallbackId];
     }
+    */
 }
 
 - (void)sendBackgroundNotification:(NSDictionary *)userInfo {
+/*
     if (self.backgroundNotificationCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userInfo];
         [pluginResult setKeepCallbackAsBool:YES];
@@ -208,13 +213,16 @@
     } else {
         self.lastNotification = userInfo;
     }
+    */
 }
 
 - (void)sendToken:(NSString *)fcmToken {
+/*
     if (self.tokenRefreshCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.tokenRefreshCallbackId];
     }
+    */
 }
 
 @end
