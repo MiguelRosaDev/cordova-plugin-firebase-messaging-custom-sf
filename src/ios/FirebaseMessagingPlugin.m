@@ -117,12 +117,14 @@
 }
 
 - (void)setBadge:(CDVInvokedUrlCommand *)command {
+/*
     int badge = [[command.arguments objectAtIndex:0] intValue];
 
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    */
 }
 
 - (void)getBadge:(CDVInvokedUrlCommand *)command {
