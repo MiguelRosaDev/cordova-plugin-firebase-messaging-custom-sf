@@ -8,15 +8,13 @@
 
 - (void)pluginInitialize {
     NSLog(@"Starting Firebase Messaging plugin");
-/*
+
     if(![FIRApp defaultApp]) {
-       [FIRApp configure];
+        [FIRApp configure];
     }
-    */
 }
 
 - (void)requestPermission:(CDVInvokedUrlCommand *)command {
-/*
     NSDictionary* options = [command.arguments objectAtIndex:0];
 
     NSNumber* forceShowSetting = options[@"forceShow"];
@@ -44,21 +42,16 @@
                           }];
 
     [[UIApplication sharedApplication] registerForRemoteNotifications];
-     */
-
 }
 
 - (void)clearNotifications:(CDVInvokedUrlCommand *)command {
-/*
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center removeAllDeliveredNotifications];
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    */
 }
 
 - (void)deleteToken:(CDVInvokedUrlCommand *)command {
-/*
     [[FIRMessaging messaging] deleteTokenWithCompletion:^(NSError * err) {
         CDVPluginResult *pluginResult;
         if (err) {
@@ -68,11 +61,9 @@
         }
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
-    */
 }
 
 - (void)getToken:(CDVInvokedUrlCommand *)command {
-/*
     CDVPluginResult *pluginResult;
     NSString* type = [command.arguments objectAtIndex:0];
 
@@ -117,31 +108,25 @@
     if (pluginResult) {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-    */
 }
 
 - (void)setBadge:(CDVInvokedUrlCommand *)command {
-/*
     int badge = [[command.arguments objectAtIndex:0] intValue];
 
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    */
 }
 
 - (void)getBadge:(CDVInvokedUrlCommand *)command {
-/*
     int badge = (int)[[UIApplication sharedApplication] applicationIconBadgeNumber];
 
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDouble:badge];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    */
 }
 
 - (void)subscribe:(CDVInvokedUrlCommand *)command {
-/*
     NSString* topic = [NSString stringWithFormat:@"%@", [command.arguments objectAtIndex:0]];
 
     [[FIRMessaging messaging] subscribeToTopic:topic
@@ -154,11 +139,9 @@
                                         }
                                         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                                     }];
-                                    */
 }
 
 - (void)unsubscribe:(CDVInvokedUrlCommand *)command {
-/*
     NSString* topic = [NSString stringWithFormat:@"%@", [command.arguments objectAtIndex:0]];
 
     [[FIRMessaging messaging] unsubscribeFromTopic:topic
@@ -171,7 +154,6 @@
                                             }
                                             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                                         }];
-                                        */
 }
 
 - (void)onMessage:(CDVInvokedUrlCommand *)command {
@@ -179,7 +161,6 @@
 }
 
 - (void)onBackgroundMessage:(CDVInvokedUrlCommand *)command {
-/*
     self.backgroundNotificationCallbackId = command.callbackId;
 
     if (self.lastNotification) {
@@ -187,7 +168,6 @@
 
         self.lastNotification = nil;
     }
-    */
 }
 
 - (void)onTokenRefresh:(CDVInvokedUrlCommand *)command {
@@ -195,17 +175,14 @@
 }
 
 - (void)sendNotification:(NSDictionary *)userInfo {
-/*
     if (self.notificationCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userInfo];
         [pluginResult setKeepCallbackAsBool:YES];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.notificationCallbackId];
     }
-    */
 }
 
 - (void)sendBackgroundNotification:(NSDictionary *)userInfo {
-/*
     if (self.backgroundNotificationCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userInfo];
         [pluginResult setKeepCallbackAsBool:YES];
@@ -213,16 +190,13 @@
     } else {
         self.lastNotification = userInfo;
     }
-    */
 }
 
 - (void)sendToken:(NSString *)fcmToken {
-/*
     if (self.tokenRefreshCallbackId) {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.tokenRefreshCallbackId];
     }
-    */
 }
 
 @end
