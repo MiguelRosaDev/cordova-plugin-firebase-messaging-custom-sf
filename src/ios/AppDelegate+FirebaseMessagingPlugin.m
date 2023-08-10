@@ -41,12 +41,12 @@
 
     //[UNUserNotificationCenter currentNotificationCenter].delegate = self;
 
-//    if (launchOptions) {
-//        NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-//        if (userInfo) {
-//            [self postNotification:userInfo background:TRUE];
-//        }
-//    }
+    if (launchOptions) {
+        NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (userInfo) {
+            [self postNotification:userInfo background:TRUE];
+        }
+    }
 
     //return handled;
 }
@@ -70,9 +70,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 }
 
 - (void)messaging:(FIRMessaging *)messaging didReceiveRegistrationToken:(NSString *)fcmToken {
-    //FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
+    FirebaseMessagingPlugin* fcmPlugin = [self getPluginInstance];
 
-    //[fcmPlugin sendToken:fcmToken];
+    [fcmPlugin sendToken:fcmToken];
 }
 
 # pragma mark - UNUserNotificationCenterDelegate
