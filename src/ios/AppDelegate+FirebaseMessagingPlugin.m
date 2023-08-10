@@ -48,7 +48,7 @@
         }
     }
 
-    //return handled;
+    return handled;
 }
 
 - (FirebaseMessagingPlugin*) getPluginInstance {
