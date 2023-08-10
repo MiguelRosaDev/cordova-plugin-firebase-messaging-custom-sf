@@ -37,9 +37,9 @@
 
 - (BOOL)identity_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // always call original method implementation first
-    //BOOL handled = [self identity_application:application didFinishLaunchingWithOptions:launchOptions];
+    BOOL handled = [self identity_application:application didFinishLaunchingWithOptions:launchOptions];
 
-    //[UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
 
     if (launchOptions) {
         NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
