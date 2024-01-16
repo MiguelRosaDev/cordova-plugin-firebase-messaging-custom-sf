@@ -18,6 +18,10 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 import com.salesforce.marketingcloud.MarketingCloudSdk;
 
+//mlrosa - add PermissionHelper to grant push notification's permission on Android 13
+import org.apache.cordova.PermissionHelper;
+import android.Manifest;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
@@ -165,6 +169,22 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
         }
     }
 
+        //mlrosa - add new method to grant push notification's permission on Android 13
+    @CordovaMethod
+    private void requestPermissionHelper(JSONObject options, CallbackContext callbackContext) {
+        Context context = cordova.getActivity().getApplicationContext();
+        this.forceShow = options.optBoolean("forceShow");
+
+        if (NotificationManagerCompat.from(context).areNotificationsEnabled()) {
+            callbackContext.success();
+        } else if (Build.VERSION.SDK_INT >= 33) {
+            PermissionHelper.requestPermission(this, 0, Manifest.permission.POST_NOTIFICATIONS);
+            callbackContext.success();
+        } else {
+            callbackContext.error("Notifications permission is not granted");
+        }
+    }
+    
     @CordovaMethod
     private void createChannel(JSONObject options, CallbackContext callbackContext) throws JSONException {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
